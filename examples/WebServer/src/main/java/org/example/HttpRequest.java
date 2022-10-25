@@ -36,15 +36,14 @@ public class HttpRequest {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(requestLine).append("\n");
-        for (String key: headers.keySet()) {
-            builder.append(key).append(": ").append(headers.get(key)).append("\n");
-        }
+        //for (String key : headers.keySet()) {
+          //  builder.append(key).append(": ").append(headers.get(key)).append("\n");
+        //}
         if (messageBody != null && !messageBody.isEmpty()) {
             builder.append("\r\n").append(messageBody);
         }
         return builder.toString();
     }
-
     public static HttpRequest parse(BufferedReader reader) throws IOException {
         String requestLine = reader.readLine();
         if (requestLine == null || requestLine.isEmpty()) {

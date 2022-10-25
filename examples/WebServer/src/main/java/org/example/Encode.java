@@ -32,10 +32,6 @@ public class Encode{
                 for (Character key : reverseSortedMap.keySet())
                     System.out.println(key + ":" + (float)Math.round(((float)reverseSortedMap.get(key)/m)*1000)/1000);
                 Node.buildHuffmanTree(data);
-                //Map<Character,String> newMap = transferHashmap(reverseSortedMap);
-                //outputData(newMap);
-                ratioComparasion(reverseSortedMap);
-                //HashMap<Character, Integer> result2 = findCodeword(reverseSortedMap,m);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -116,45 +112,7 @@ public class Encode{
                 );
         return hashMap;
     }
-    public static void ratioComparasion(LinkedHashMap<Character, Integer> reverseSortedMap) throws FileNotFoundException {
 
-        File myObj = new File("text.txt");
-        File myObj1 = new File("outData.txt");
-        System.out.println("Step 5");
-        System.out.println("---------------------------------------------------------------------------------");
-        Scanner myReader = new Scanner(myObj);
-        Scanner myReader1= new Scanner(myObj1);
-        float m=0;
-        float s=0;
-        int a=0;
-        int b=0;
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            float stringLength = data.length();
-            System.out.println("Number of bits in the original text:" + stringLength*8);
-            m=stringLength*8;}
-        while (myReader1.hasNextLine()){
-            String data1 = myReader1.nextLine();
-            float stringLength1 = data1.length();
-            System.out.println("Number of bits in the compressed text:" + stringLength1);
-            s=stringLength1;
-        }
-        for (Character key : reverseSortedMap.keySet()){
-            a=a+reverseSortedMap.get(key);
-            b++;
-        }
-        System.out.println("Compression ratio:" + m/s);
-        float sum=0;
-        for (Integer val : reverseSortedMap.values()){
-            for(String var: Node.huffmanCode1.values()) {
-                if(reverseSortedMap.keySet().equals(Node.huffmanCode1.keySet())){
-                    sum=(float)val/m * var.length();
-                }
-            }
-        }
-        System.out.println("Average code length: " + (float)sum);
-
-    }
 
 
 }
